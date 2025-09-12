@@ -1,0 +1,68 @@
+version: '3.8'
+
+services:
+  cs2-server:
+    image: joedwards32/cs2:latest
+    container_name: thelobby-cs2-server
+    restart: unless-stopped
+    environment:
+      # Server Token (нужно получить с https://steamcommunity.com/dev/managegameservers)
+      SRCDS_TOKEN: "YOUR_GSLT_TOKEN_HERE"
+      
+      # Server Configuration
+      CS2_SERVERNAME: "The Lobby.Sol Hackathon Server"
+      CS2_RCONPW: "thelobby_rcon_2024_hackathon"
+      CS2_PW: "thelobby_sol_2024"  # Пароль для подключения (только зарегистрированные)
+      CS2_MAXPLAYERS: 16
+      CS2_PORT: 27015
+      CS2_IP: "0.0.0.0"
+      CS2_LAN: "0"
+      
+      # Game Mode - Deathmatch with Bots
+      CS2_GAMEALIAS: "deathmatch"
+      CS2_MAPGROUP: "mg_deathmatch"
+      CS2_STARTMAP: "de_dust2"
+      CS2_BOT_QUOTA: "14"
+      CS2_BOT_DIFFICULTY: "2"
+      
+      # Logging for kill events
+      CS2_LOG: "on"
+      CS2_LOG_DETAIL: "3"  # All combat damage
+      CS2_LOG_ITEMS: "1"   # Item logging
+      CS2_LOG_MONEY: "1"   # Money logging
+      
+      # Performance
+      CS2_CHEATS: "0"
+      CS2_SERVER_HIBERNATE: "0"
+      
+      # SourceTV for demos
+      TV_ENABLE: "1"
+      TV_PORT: "27020"
+      TV_AUTORECORD: "1"
+      TV_PW: "thelobby_tv_2024"
+      
+      # Debug
+      DEBUG: "1"
+      
+    ports:
+      - "27015:27015/tcp"    # Game server
+      - "27015:27015/udp"    # Game server  
+      - "27020:27020/udp"    # SourceTV
+      
+    volumes:
+      - cs2_data:/home/steam/cs2-dedicated/
+      - ./cs2-configs:/home/steam/cs2-dedicated/game/csgo/cfg/
+      
+    # Resource limits
+    deploy:
+      resources:
+        limits:
+          memory: 3G
+          cpus: '3.0'
+        reservations:
+          memory: 2G
+          cpus: '2.0'
+
+volumes:
+  cs2_data:
+    driver: local

@@ -1,5 +1,7 @@
 import React from 'react';
 import TokenDashboard from '../components/TokenDashboard';
+import DemoControls from '../components/DemoControls';
+import LiveFeed from '../components/LiveFeed';
 
 const DashboardPage: React.FC = () => {
   return (
@@ -13,7 +15,15 @@ const DashboardPage: React.FC = () => {
         </p>
       </div>
       
-      <TokenDashboard />
+      <div className="grid lg:grid-cols-3 gap-6">
+        <div className="lg:col-span-2 space-y-6">
+          <DemoControls />
+          <TokenDashboard />
+        </div>
+        <div>
+          <LiveFeed />
+        </div>
+      </div>
     </div>
   );
 };

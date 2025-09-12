@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Home, Server, BarChart3, Github } from 'lucide-react';
+import { Home, Server, User, Trophy, Github } from 'lucide-react';
 import WalletManager from './WalletManager';
 
 interface LayoutProps {
@@ -13,7 +13,8 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
   const navigation = [
     { name: 'Home', href: '/', icon: Home },
     { name: 'Servers', href: '/servers', icon: Server },
-    { name: 'Dashboard', href: '/dashboard', icon: BarChart3 },
+    { name: 'Profile', href: '/profile', icon: User },
+    { name: 'Leaderboard', href: '/leaderboard', icon: Trophy },
   ];
 
   const isActive = (href: string) => {
@@ -21,7 +22,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900">
+    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900 flex flex-col">
       {/* Header */}
       <header className="border-b border-white/10 bg-black/20 backdrop-blur-sm">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -67,13 +68,13 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
       </header>
 
       {/* Main Content */}
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <main className="flex-1 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 w-full">
         {children}
       </main>
 
       {/* Footer */}
-      <footer className="border-t border-white/10 bg-black/20 backdrop-blur-sm mt-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <footer className="border-t border-white/10 bg-black/20 backdrop-blur-sm mt-auto">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <div className="text-center md:text-left">
               <p className="text-gray-400 text-sm">

@@ -52,11 +52,11 @@ const HomePage: React.FC = () => {
                 Browse Servers
               </Link>
               <Link
-                to="/dashboard"
+                to="/profile"
                 className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-solana-purple to-solana-green text-white font-semibold rounded-lg hover:shadow-lg hover:shadow-solana-purple/25 transition-all duration-300"
               >
                 <Trophy className="w-5 h-5" />
-                View Dashboard
+                View Profile
               </Link>
             </>
           ) : (

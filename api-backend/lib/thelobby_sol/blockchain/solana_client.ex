@@ -38,14 +38,17 @@ defmodule ThelobbySol.Blockchain.SolanaClient do
   Mint headshot token for player
   """
   def mint_headshot_token(wallet_address, _kill_data) do
-    Logger.info("Minting headshot token for: #{wallet_address}")
+    Logger.info("Minting SKILLS token for headshot: #{wallet_address}")
 
-    # Mint headshot achievement token
+    # Mint 1 SKILLS token for headshot achievement
     {:ok, %{
-      mint_address: "HeadshotToken1111111111111111111111111",
+      mint_address: "SKiLLs1111111111111111111111111111111111",
+      token_name: "Skills Token",
+      token_symbol: "SKILLS",
       token_account: generate_token_account(wallet_address),
       transaction_signature: generate_mock_signature(),
-      amount: 1
+      amount: 1,
+      achievement_type: "headshot"
     }}
   end
 
@@ -53,15 +56,19 @@ defmodule ThelobbySol.Blockchain.SolanaClient do
   Mint kill streak token for player
   """
   def mint_streak_token(wallet_address, streak_data) do
-    Logger.info("Minting streak token for: #{wallet_address}, streak: #{streak_data.streak_count}")
+    streak_count = Map.get(streak_data, "streak_count", 10)
+    Logger.info("Minting SKILLS token for kill streak: #{wallet_address}, streak: #{streak_count}")
 
-    # Mint kill streak achievement token
+    # Mint 1 SKILLS token for kill streak achievement
     {:ok, %{
-      mint_address: "StreakToken11111111111111111111111111",
+      mint_address: "SKiLLs1111111111111111111111111111111111",
+      token_name: "Skills Token",
+      token_symbol: "SKILLS",
       token_account: generate_token_account(wallet_address),
       transaction_signature: generate_mock_signature(),
       amount: 1,
-      streak_count: streak_data.streak_count
+      streak_count: streak_count,
+      achievement_type: "kill_streak"
     }}
   end
 

@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_BASE_URL = 'http://localhost:4000/api';
+const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:4000'; // Will be configurable in production
 
 const api = axios.create({
   baseURL: API_BASE_URL,
@@ -11,13 +11,13 @@ const api = axios.create({
 
 // Player API
 export const registerPlayer = async (walletAddress: string) => {
-  return api.post('/players/register', {
+  return api.post('/api/players/register', {
     wallet_address: walletAddress,
   });
 };
 
 export const getPlayerDashboard = async (walletAddress: string) => {
-  return api.get(`/players/${walletAddress}/dashboard`);
+  return api.get(`/api/players/${walletAddress}/dashboard`);
 };
 
 export const processAchievement = async (
@@ -25,7 +25,7 @@ export const processAchievement = async (
   achievementType: 'headshot' | 'kill_streak',
   achievementData: any
 ) => {
-  return api.post('/players/achievement', {
+  return api.post('/api/players/achievement', {
     wallet_address: walletAddress,
     achievement_type: achievementType,
     achievement_data: achievementData,
@@ -34,15 +34,15 @@ export const processAchievement = async (
 
 // Gaming API
 export const getServers = async () => {
-  return api.get('/gaming/servers');
+  return api.get('/api/gaming/servers');
 };
 
 export const getServerStatus = async (serverId: string) => {
-  return api.get(`/gaming/servers/${serverId}`);
+  return api.get(`/api/gaming/servers/${serverId}`);
 };
 
 export const simulateKillEvent = async (playerId: string, eventType: string) => {
-  return api.post('/gaming/simulate-kill', {
+  return api.post('/api/gaming/simulate-kill', {
     player_id: playerId,
     event_type: eventType,
   });

@@ -3,8 +3,9 @@ import { WalletProvider } from './providers/WalletProvider';
 import { Toaster } from 'react-hot-toast';
 import Layout from './components/Layout';
 import HomePage from './pages/HomePage';
-import DashboardPage from './pages/DashboardPage';
 import ServersPage from './pages/ServersPage';
+import ProfilePage from './pages/ProfilePage';
+import LeaderboardPage from './pages/LeaderboardPage';
 
 function App() {
   return (
@@ -14,8 +15,9 @@ function App() {
           <Layout>
             <Routes>
               <Route path="/" element={<HomePage />} />
-              <Route path="/dashboard" element={<DashboardPage />} />
               <Route path="/servers" element={<ServersPage />} />
+              <Route path="/profile" element={<ProfilePage />} />
+              <Route path="/leaderboard" element={<LeaderboardPage />} />
             </Routes>
           </Layout>
           <Toaster 

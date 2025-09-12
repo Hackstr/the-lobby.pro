@@ -16,10 +16,12 @@ defmodule ThelobbySol.Application do
       {Phoenix.PubSub, name: ThelobbySol.PubSub},
       # Start Finch
       {Finch, name: ThelobbySol.Finch},
+      # Start CS2 RCON client for real-time events
+      {ThelobbySol.Gaming.RconClient, []},
       # Start the Endpoint (http/https)
       ThelobbysolWeb.Endpoint
-      # Start a worker by calling: ThelobbySol.Worker.start_link(arg)
-      # {ThelobbySol.Worker, arg}
+      # Socket supervision tree disabled for stable demo
+      # {Phoenix.Socket.PoolSupervisor, name: ThelobbySol.SocketSupervisor}
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html
