@@ -22,6 +22,8 @@ help:
 	@echo "Deployment Commands:"
 	@echo "  make deploy      - Deploy Solana program to devnet"
 	@echo "  make deploy-prod - Build for production"
+	@echo "  make deploy-web  - Deploy frontend to Fly.io"
+	@echo "  make deploy-api  - Deploy API to Fly.io"
 	@echo ""
 	@echo "Utility Commands:"
 	@echo "  make clean       - Clean build artifacts"
@@ -101,6 +103,15 @@ deploy-prod: build
 	@echo "Building for production..."
 	cd web-frontend && npm run build
 	@echo "Production build complete. Deploy dist/ folder to your hosting service."
+
+# Fly.io convenient targets
+deploy-web:
+	@echo "Deploying web-frontend to Fly.io..."
+	cd web-frontend && flyctl deploy --app thelobby-sol-frontend
+
+deploy-api:
+	@echo "Deploying api-backend to Fly.io..."
+	cd api-backend && flyctl deploy --app thelobby-sol-api
 
 # Database
 db-setup:

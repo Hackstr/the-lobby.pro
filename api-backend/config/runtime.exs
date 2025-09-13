@@ -46,4 +46,13 @@ if config_env() == :prod do
   config :thelobby_sol, :solana,
     rpc_url: System.get_env("SOLANA_RPC_URL") || "https://api.devnet.solana.com",
     program_id: System.get_env("SOLANA_PROGRAM_ID") || "HackathonSkillTokenProgram111111111111111"
+
+  # Unified SKILLS token configuration (single mint on Devnet)
+  config :thelobby_sol, :skills,
+    mint: System.get_env("SKILLS_MINT_ADDRESS") || "SKILLSMint111111111111111111111111111111111",
+    symbol: System.get_env("SKILLS_TOKEN_SYMBOL") || "SKILLS",
+    decimals: String.to_integer(System.get_env("SKILLS_TOKEN_DECIMALS") || "9")
+
+  # External minter service URL (optional; if not set, uses mock)
+  config :thelobby_sol, :mint_service_url, System.get_env("MINT_SERVICE_URL")
 end

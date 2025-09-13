@@ -67,6 +67,9 @@ const DemoControls: React.FC = () => {
     setLoading(true);
     try {
       const response: any = await request(`/api/players/${publicKey.toString()}/reset-stats`, { method: 'POST' });
+      // Обновим UI без полной перезагрузки
+      try { (window as any).location && (window as any).history && window.history.replaceState({}, '', window.location.href) } catch {}
+      setTimeout(() => window.location.reload(), 300);
       
       if (response?.success) {
         toast.success('🔄 Статистика сброшена!', {
@@ -127,7 +130,7 @@ const DemoControls: React.FC = () => {
           <Zap className="w-6 h-6 text-cs2-blue" />
           <div className="text-left">
             <div className="text-white font-medium">Симулировать серию</div>
-            <div className="text-sm text-gray-400">+50 XP, +1 SKILLS</div>
+            <div className="text-sm text-gray-400">+50 XP, +5 SKILLS</div>
           </div>
         </button>
 
