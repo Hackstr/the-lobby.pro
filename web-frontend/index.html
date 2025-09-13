@@ -4,8 +4,35 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Force browser cache refresh -->
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
     <title>The Lobby.Sol - CS2 Gaming Tokenization</title>
     <meta name="description" content="Earn NFT tokens for your Counter-Strike 2 achievements on Solana blockchain" />
+    
+    <!-- КРИТИЧНО: Инициализация полифиллов ДО загрузки React -->
+    <script>
+      // Полифиллы для Solana - должны быть установлены синхронно
+      if (typeof window !== 'undefined') {
+        // Global polyfill
+        if (typeof globalThis.global === 'undefined') {
+          globalThis.global = globalThis;
+        }
+        
+        // Process polyfill
+        if (typeof globalThis.process === 'undefined') {
+          globalThis.process = { env: {} };
+        }
+        
+        // Проверяем fetch
+        if (!window.fetch) {
+          console.error('Fetch API not available');
+        }
+        
+        console.log('✅ Core polyfills initialized');
+      }
+    </script>
   </head>
   <body>
     <div id="root"></div>

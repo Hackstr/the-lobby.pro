@@ -2,10 +2,13 @@ app = "thelobby-sol-frontend"
 primary_region = "fra"
 
 [build]
+  [build.args]
+    VITE_API_URL = "https://thelobby-sol-api.fly.dev"
+    VITE_SOLANA_NETWORK = "devnet"
+    VITE_PROGRAM_ID = "HackathonSkillTokenProgram111111111111111"
 
 [env]
   NODE_ENV = "production"
-  VITE_API_URL = "https://thelobby-sol-api.fly.dev"
 
 [http_service]
   internal_port = 3000

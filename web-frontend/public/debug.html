@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Debug Solana Wallet</title>
+</head>
+<body>
+    <h1>DEBUG: Solana Wallet Adapter Test</h1>
+    
+    <script type="module">
+        // 1. Проверяем доступность fetch API
+        console.log('=== FETCH API DEBUG ===');
+        console.log('window.fetch:', typeof window.fetch);
+        console.log('globalThis.fetch:', typeof globalThis.fetch);
+        console.log('fetch:', typeof fetch);
+        
+        // 2. Тестируем деструктуризацию
+        console.log('=== DESTRUCTURING TEST ===');
+        try {
+            const { fetch: testFetch } = globalThis;
+            console.log('✅ Destructuring globalThis.fetch - SUCCESS:', typeof testFetch);
+        } catch (error) {
+            console.error('❌ Destructuring globalThis.fetch - ERROR:', error);
+        }
+        
+        try {
+            const { fetch: testFetch2 } = window;
+            console.log('✅ Destructuring window.fetch - SUCCESS:', typeof testFetch2);
+        } catch (error) {
+            console.error('❌ Destructuring window.fetch - ERROR:', error);
+        }
+        
+        // 3. Проверяем Solana Wallet Adapter
+        console.log('=== SOLANA WALLET DEBUG ===');
+        
+        // Имитируем то, что может делать Solana Wallet Adapter
+        try {
+            import('@solana/wallet-adapter-base').then(module => {
+                console.log('✅ @solana/wallet-adapter-base loaded:', Object.keys(module));
+            }).catch(error => {
+                console.error('❌ @solana/wallet-adapter-base error:', error);
+            });
+        } catch (error) {
+            console.error('❌ Import error:', error);
+        }
+        
+        // 4. Проверяем browser environment
+        console.log('=== BROWSER ENVIRONMENT ===');
+        console.log('User Agent:', navigator.userAgent);
+        console.log('URL:', window.location.href);
+        console.log('Protocol:', window.location.protocol);
+        
+        // 5. Тест простого fetch запроса
+        console.log('=== FETCH TEST ===');
+        try {
+            fetch('https://api.devnet.solana.com', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    jsonrpc: '2.0',
+                    id: 1,
+                    method: 'getVersion'
+                })
+            })
+            .then(response => response.json())
+            .then(data => console.log('✅ Solana RPC test success:', data))
+            .catch(error => console.error('❌ Solana RPC test error:', error));
+        } catch (error) {
+            console.error('❌ Fetch test error:', error);
+        }
+    </script>
+</body>
+</html>

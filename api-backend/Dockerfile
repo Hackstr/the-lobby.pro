@@ -1,8 +1,8 @@
-# Build stage
-FROM hexpm/elixir:1.18.4-erlang-27.2.1-alpine-3.20.3 AS build
+# Use official Elixir image
+FROM elixir:1.15-alpine AS build
 
 # Install build dependencies
-RUN apk add --no-cache build-base npm git python3 openssh-client
+RUN apk add --no-cache build-base git openssh-client
 
 # Set build ENV
 ENV MIX_ENV=prod
@@ -17,52 +17,34 @@ WORKDIR /app
 # Copy mix files
 COPY mix.exs mix.lock ./
 RUN mix deps.get --only prod
-RUN mkdir config
 
-# Copy compile-time config files before we compile dependencies
-COPY config/config.exs config/prod.exs config/
+# Copy config
+COPY config config
 RUN mix deps.compile
 
-# Copy priv, lib, assets
+# Copy source
 COPY priv priv
 COPY lib lib
 
-# Compile the release
+# Compile and build release
 RUN mix compile
-
-# Copy runtime config
-COPY config/runtime.exs config/
-
-# Assemble the release
 RUN mix release
 
 # Runtime stage
-FROM alpine:3.20.3 AS app
+FROM alpine:3.18 AS app
 
-RUN apk add --no-cache openssl ncurses-libs openssh-client sshpass
+# Install runtime dependencies including C++ libraries
+RUN apk add --no-cache openssl ncurses-libs bash openssh-client libstdc++ libgcc
 
-ENV USER="elixir"
+WORKDIR /app
 
-WORKDIR "/home/elixir"
+# Copy release
+COPY --from=build /app/_build/prod/rel/thelobby_sol ./
 
-# Create user
-RUN \
-  addgroup \
-   -g 1000 \
-   -S "${USER}" \
-  && adduser \
-   -s /bin/sh \
-   -u 1000 \
-   -G "${USER}" \
-   -h "/home/${USER}" \
-   -D "${USER}"
-
-USER "${USER}"
-
-COPY --from=build --chown=elixir:elixir /app/_build/prod/rel/thelobby_sol ./
-
-ENV HOME=/home/elixir
+# Create non-root user
+RUN adduser -D -s /bin/bash app
+USER app
 
 EXPOSE 4000
 
-CMD ["bin/thelobby_sol", "start"]
+CMD ["./bin/thelobby_sol", "start"]

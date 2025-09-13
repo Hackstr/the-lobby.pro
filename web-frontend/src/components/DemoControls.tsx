@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useWallet } from '@solana/wallet-adapter-react';
 import { Target, Zap, Play, RefreshCw, RotateCcw } from 'lucide-react';
-import axios from 'axios';
+import { request } from '../services/api';
 import toast from 'react-hot-toast';
 
 const DemoControls: React.FC = () => {
@@ -13,10 +13,10 @@ const DemoControls: React.FC = () => {
     
     setLoading(true);
     try {
-      const response = await axios.post(`http://localhost:4000/api/players/${publicKey.toString()}/simulate-headshot`);
+      const response: any = await request(`/api/players/${publicKey.toString()}/simulate-headshot`, { method: 'POST' });
       
-      if (response.data.success) {
-        toast.success(response.data.message || '🎯 SKILLS токен получен!', {
+      if (response?.success) {
+        toast.success(response.message || '🎯 SKILLS токен получен!', {
           duration: 4000,
         });
         
@@ -38,12 +38,13 @@ const DemoControls: React.FC = () => {
     
     setLoading(true);
     try {
-      const response = await axios.post(`http://localhost:4000/api/players/${publicKey.toString()}/simulate-streak`, {
-        streak_count: 10
+      const response: any = await request(`/api/players/${publicKey.toString()}/simulate-streak`, {
+        method: 'POST',
+        body: { streak_count: 10 }
       });
       
-      if (response.data.success) {
-        toast.success(response.data.message || '⚡ SKILLS токен получен!', {
+      if (response?.success) {
+        toast.success(response.message || '⚡ SKILLS токен получен!', {
           duration: 4000,
         });
         
@@ -65,9 +66,9 @@ const DemoControls: React.FC = () => {
     
     setLoading(true);
     try {
-      const response = await axios.post(`http://localhost:4000/api/players/${publicKey.toString()}/reset-stats`);
+      const response: any = await request(`/api/players/${publicKey.toString()}/reset-stats`, { method: 'POST' });
       
-      if (response.data.success) {
+      if (response?.success) {
         toast.success('🔄 Статистика сброшена!', {
           duration: 4000,
         });

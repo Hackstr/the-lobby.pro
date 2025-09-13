@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Server, Users, MapPin, Wifi, Play, Globe, Lock, Target } from 'lucide-react';
+import { Server, Users, MapPin, Play, Globe, Lock, Target } from 'lucide-react';
 import { getServers } from '../services/api';
 import toast from 'react-hot-toast';
 
@@ -26,15 +26,15 @@ const ServerBrowser: React.FC = () => {
 
   const loadServers = async () => {
     try {
-      const response = await getServers();
-      console.log('API Response:', response.data);
+      const response: any = await getServers();
+      console.log('API Response:', response);
       
-      if (response.data && response.data.data && response.data.data.servers) {
-        setServers(response.data.data.servers);
-      } else if (response.data && response.data.servers) {
+      if (response && response.data && response.data.servers) {
         setServers(response.data.servers);
+      } else if (response && response.servers) {
+        setServers(response.servers);
       } else {
-        console.warn('Unexpected API response format:', response.data);
+        console.warn('Unexpected API response format:', response);
         setServers([]);
         toast.error('Unexpected server data format');
       }
@@ -124,7 +124,7 @@ const ServerBrowser: React.FC = () => {
             <div className="absolute inset-0 opacity-30">
               <div className="w-full h-full bg-gradient-to-br from-white/[0.02] to-transparent" 
                    style={{
-                     backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.02'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`
+                     backgroundImage: "url(\"data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.02'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E\")"
                    }}>
               </div>
             </div>

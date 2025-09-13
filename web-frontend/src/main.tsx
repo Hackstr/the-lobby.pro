@@ -1,3 +1,6 @@
+// Инициализируем полифиллы ДО импорта любых других модулей
+import './utils/globalPolyfills'
+
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App.tsx'

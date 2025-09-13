@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useWallet } from '@solana/wallet-adapter-react';
 import { User, Award, Star, TrendingUp, Target, Zap, Crown, Medal } from 'lucide-react';
-import { getPlayerDashboard } from '../services/api';
-import axios from 'axios';
+import { getPlayerDashboard, request } from '../services/api';
 import toast from 'react-hot-toast';
 
 interface PlayerLevel {
@@ -50,10 +49,9 @@ const PlayerProfile: React.FC = () => {
     
     setLoading(true);
     try {
-      const response = await getPlayerDashboard(publicKey.toString());
-      
-      // API возвращает {success: true, data: {...}}, нам нужен data
-      const playerData = response.data.success ? response.data.data : response.data;
+      const response: any = await getPlayerDashboard(publicKey.toString());
+      // API может вернуть {success, data} или сразу объект данных
+      const playerData = (response && response.success) ? response.data : response;
       
       setPlayerData(playerData);
       
@@ -126,19 +124,20 @@ const PlayerProfile: React.FC = () => {
     
     setClaimingAchievement(achievementId);
     try {
-      const response = await axios.post(`http://localhost:4000/api/players/${publicKey.toString()}/claim-achievement`, {
-        achievement_id: achievementId
+      const response: any = await request(`/api/players/${publicKey.toString()}/claim-achievement`, {
+        method: 'POST',
+        body: { achievement_id: achievementId }
       });
       
-      if (response.data.success) {
-        toast.success(response.data.message, {
+      if (response?.success) {
+        toast.success(response.message, {
           duration: 5000,
         });
         
         // Refresh page data
         loadPlayerData();
       } else {
-        toast.error(response.data.message || 'Не удалось забрать достижение');
+        toast.error(response?.message || 'Не удалось забрать достижение');
       }
     } catch (error) {
       console.error('Achievement claim failed:', error);
@@ -164,7 +163,6 @@ const PlayerProfile: React.FC = () => {
     if (!playerData || !playerData.stats) return [];
     
     const stats = playerData.stats;
-    const claimedAchievements = playerData.claimed_achievements || [];
     
     return [
       {
@@ -347,7 +345,6 @@ const PlayerProfile: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {achievements.map((achievement) => {
             const Icon = achievement.icon;
-            const claimedAchievements = playerData?.claimed_achievements || [];
             return (
               <div 
                 key={achievement.id}
@@ -369,14 +366,14 @@ const PlayerProfile: React.FC = () => {
                   {achievement.unlocked && (
                     <button
                       onClick={() => claimAchievement(achievement.id)}
-                      disabled={claimingAchievement === achievement.id || claimedAchievements.includes(achievement.id)}
+                      disabled={claimingAchievement === achievement.id || (playerData?.claimed_achievements || []).includes(achievement.id)}
                       className={`text-xs font-semibold px-3 py-2 rounded transition-colors disabled:opacity-50 ${
-                        claimedAchievements.includes(achievement.id)
+                        (playerData?.claimed_achievements || []).includes(achievement.id)
                           ? 'text-green-400 bg-green-400/10 cursor-not-allowed'
                           : 'text-yellow-400 bg-yellow-400/10 hover:bg-yellow-400/20'
                       }`}
                     >
-                      {claimedAchievements.includes(achievement.id) 
+                      {(playerData?.claimed_achievements || []).includes(achievement.id) 
                         ? '✅ ПОЛУЧЕНО' 
                         : claimingAchievement === achievement.id 
                           ? '⏳' 

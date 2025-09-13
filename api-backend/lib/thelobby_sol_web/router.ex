@@ -9,6 +9,9 @@ defmodule ThelobbysolWeb.Router do
   scope "/api", ThelobbysolWeb do
     pipe_through :api
 
+    # Health check
+    get "/health", HealthController, :check
+
     # Player management routes
     post "/players/register", PlayerController, :register
     get "/players/:wallet_address/dashboard", PlayerController, :dashboard
@@ -31,7 +34,7 @@ defmodule ThelobbysolWeb.Router do
     get "/leaderboard", LeaderboardController, :index
   end
 
-  # Health check and test endpoints
+  # Additional health endpoints
   scope "/", ThelobbysolWeb do
     pipe_through :api
 

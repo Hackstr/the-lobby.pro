@@ -10,8 +10,10 @@ if config_env() == :prod do
 
   config :thelobby_sol, ThelobbySol.Repo,
     url: database_url,
-    pool_size: String.to_integer(System.get_env("POOL_SIZE") || "10"),
-    socket_options: [:inet6]
+    pool_size: String.to_integer(System.get_env("POOL_SIZE") || "5"),
+    socket_options: [:inet6],
+    timeout: 60_000,
+    connect_timeout: 60_000
 
   secret_key_base =
     System.get_env("SECRET_KEY_BASE") ||

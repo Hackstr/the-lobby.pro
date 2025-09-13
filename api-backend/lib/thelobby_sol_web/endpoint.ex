@@ -49,9 +49,16 @@ defmodule ThelobbysolWeb.Endpoint do
   plug Plug.Head
   plug Plug.Session, @session_options
 
-  # Enable CORS for hackathon development
+  # Enable CORS for hackathon development and production
   plug CORSPlug,
-    origin: ["http://localhost:3000", "http://localhost:5173", "http://127.0.0.1:3000"],
+    origin: [
+      "http://localhost:3000",
+      "http://localhost:5173",
+      "http://127.0.0.1:3000",
+      "https://thelobby-sol-frontend.fly.dev",
+      "https://the-lobby.pro",
+      "https://www.the-lobby.pro"
+    ],
     max_age: 86400,
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     headers: ["Content-Type", "Authorization", "Accept"]

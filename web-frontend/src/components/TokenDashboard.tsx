@@ -41,8 +41,8 @@ const TokenDashboard: React.FC = () => {
     
     setLoading(true);
     try {
-      const response = await getPlayerDashboard(publicKey.toString());
-      setDashboardData(response.data);
+      const response: any = await getPlayerDashboard(publicKey.toString());
+      setDashboardData(response?.data || response);
     } catch (error) {
       console.error('Failed to load dashboard:', error);
       toast.error('Failed to load dashboard data');

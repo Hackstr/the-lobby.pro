@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Crown, Trophy, Target, Zap, Medal } from 'lucide-react';
-import axios from 'axios';
+import { request } from '../services/api';
 
 interface LeaderboardPlayer {
   rank: number;
@@ -26,12 +26,12 @@ const Leaderboard: React.FC = () => {
     setLoading(true);
     
     try {
-      const response = await axios.get(`http://localhost:4000/api/leaderboard?sort_by=${activeTab}`);
+      const response: any = await request(`/api/leaderboard?sort_by=${activeTab}`);
       
-      if (response.data.success) {
-        setPlayers(response.data.data.players);
+      if (response?.success) {
+        setPlayers(response.data.players);
       } else {
-        console.error('Failed to load leaderboard:', response.data.error);
+        console.error('Failed to load leaderboard:', response?.error);
         // Fallback to empty array
         setPlayers([]);
       }
