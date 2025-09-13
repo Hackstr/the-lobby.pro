@@ -10,7 +10,7 @@ services:
       SRCDS_TOKEN: "YOUR_GSLT_TOKEN_HERE"
       
       # Server Configuration
-      CS2_SERVERNAME: "The Lobby.Sol Hackathon Server"
+      CS2_SERVERNAME: "The-lobby.pro Hackathon Server"
       CS2_RCONPW: "thelobby_rcon_2024_hackathon"
       CS2_PW: "thelobby_sol_2024"  # Пароль для подключения (только зарегистрированные)
       CS2_MAXPLAYERS: 16

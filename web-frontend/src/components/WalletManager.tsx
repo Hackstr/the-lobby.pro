@@ -10,23 +10,23 @@ const WalletManager: React.FC = () => {
     <div className="wallet-manager">
       <div className="flex items-center gap-4">
         {connected && publicKey ? (
-          <div className="flex items-center gap-3 bg-gradient-to-r from-solana-purple/20 to-solana-green/20 px-4 py-2 rounded-lg border border-solana-purple/30">
-            <Zap className="w-5 h-5 text-solana-green" />
+          <div className="flex items-center gap-3 px-4 py-2 rounded-lg border border-[color:var(--brand-accent)]/30 bg-[color:var(--brand-accent)]/10">
+            <Zap className="w-5 h-5 text-[color:var(--brand-accent)]" />
             <div className="text-sm">
-              <div className="text-gray-300">Connected:</div>
-              <div className="font-mono text-xs text-white">
+              <div className="text-[color:var(--brand-text)]/60">Connected:</div>
+              <div className="font-mono text-xs">
                 {publicKey.toString().slice(0, 4)}...{publicKey.toString().slice(-4)}
               </div>
             </div>
           </div>
         ) : (
-          <div className="flex items-center gap-2 text-gray-400">
-            <Wallet className="w-5 h-5" />
+          <div className="flex items-center gap-2 text-[color:var(--brand-text)]/60 border border-[color:var(--brand-border)] px-3 py-2 rounded-lg bg-white">
+            <Wallet className="w-5 h-5 text-[color:var(--brand-accent)]" />
             <span className="text-sm">Not Connected</span>
           </div>
         )}
-        
-        <WalletMultiButton className="!bg-gradient-to-r !from-solana-purple !to-solana-green" />
+
+        <WalletMultiButton className="!bg-[color:var(--brand-accent)] !text-white !px-4 !py-2 !rounded-lg hover:!opacity-90" />
       </div>
     </div>
   );

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo "🚀 DEPLOYING THE LOBBY.SOL TO PRODUCTION"
+echo "🚀 DEPLOYING THE-LOBBY.PRO TO PRODUCTION"
 echo "========================================"
 
 # Colors

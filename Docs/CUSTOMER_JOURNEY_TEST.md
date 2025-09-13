@@ -1,4 +1,4 @@
-# 🎮 CUSTOMER JOURNEY TEST - The Lobby.Sol
+# 🎮 CUSTOMER JOURNEY TEST - The-lobby.pro
 ## Полный тест пользовательского пути
 
 ---
@@ -7,7 +7,7 @@
 
 ### **STEP 1: DISCOVERY & LANDING**
 ```
-Пользователь слышит о The Lobby.Sol
+Пользователь слышит о The-lobby.pro
 ↓
 Открывает localhost:3000
 ↓

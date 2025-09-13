@@ -1,4 +1,4 @@
-# 📊 PITCH DECK OUTLINE - The Lobby.Sol
+# 📊 PITCH DECK OUTLINE - The-lobby.pro
 ## Структура слайдов для презентации
 
 ---

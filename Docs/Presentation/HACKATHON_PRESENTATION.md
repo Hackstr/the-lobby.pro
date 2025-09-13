@@ -1,4 +1,4 @@
-# 🚀 THE LOBBY.SOL - HACKATHON PRESENTATION
+# 🚀 THE-LOBBY.PRO - HACKATHON PRESENTATION
 ## Tokenizing CS2 Achievements on Solana Blockchain
 
 ---
@@ -6,7 +6,7 @@
 ## 1. 👥 ТЕМА И КОМАНДА
 
 ### **Название проекта:**
-**The Lobby.Sol** - Платформа токенизации игровых достижений в Counter-Strike 2
+**The-lobby.pro** - Платформа токенизации игровых достижений в Counter-Strike 2
 
 ### **Команда:**
 - **Город**: Алматы, Казахстан

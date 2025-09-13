@@ -1,5 +1,5 @@
 # 🎮 CS2 DEDICATED SERVER SETUP GUIDE
-## Полное руководство по настройке CS2 сервера для The Lobby.Sol
+## Полное руководство по настройке CS2 сервера для The-lobby.pro
 
 ---
 
@@ -82,7 +82,7 @@ cd /home/cs2server/cs2
 ### server.cfg (создается автоматически):
 ```cfg
 // Basic server settings
-hostname "The Lobby.Sol CS2 Server #1"
+hostname "The-lobby.pro CS2 Server #1"
 sv_password ""
 sv_lan 0
 sv_region 3
@@ -129,7 +129,7 @@ cd /home/cs2server/cs2
 2. Войти в Steam аккаунт
 3. Создать новый Game Server Account
 4. **App ID**: `730` (Counter-Strike 2)
-5. **Memo**: "The Lobby.Sol Hackathon Server"
+5. **Memo**: "The-lobby.pro Hackathon Server"
 6. Скопировать сгенерированный токен
 
 ### Установка GSLT:
@@ -279,7 +279,7 @@ tail -f /home/cs2server/cs2/game/csgo/logs/*.log
 
 ---
 
-## 🎯 ИНТЕГРАЦИЯ С THE LOBBY.SOL
+## 🎯 ИНТЕГРАЦИЯ С THE-LOBBY.PRO
 
 ### После настройки сервера:
 1. ✅ **RCON Client** подключится автоматически

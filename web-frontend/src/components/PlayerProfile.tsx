@@ -212,11 +212,11 @@ const PlayerProfile: React.FC = () => {
   if (!connected) {
     return (
       <div className="text-center py-12">
-        <User className="w-16 h-16 text-gray-400 mx-auto mb-4" />
-        <h2 className="text-xl font-semibold text-white mb-2">
+        <User className="w-16 h-16 text-[color:var(--brand-text)]/50 mx-auto mb-4" />
+        <h2 className="text-xl font-semibold mb-2">
           Подключи кошелёк
         </h2>
-        <p className="text-gray-400">
+        <p className="text-[color:var(--brand-text)]/60">
           Подключи Phantom кошелёк чтобы увидеть свой профиль игрока
         </p>
       </div>
@@ -226,7 +226,7 @@ const PlayerProfile: React.FC = () => {
   if (loading) {
     return (
       <div className="flex justify-center items-center h-64">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-solana-purple"></div>
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[color:var(--brand-accent)]"></div>
       </div>
     );
   }
@@ -234,16 +234,16 @@ const PlayerProfile: React.FC = () => {
   if (!playerData) {
     return (
       <div className="text-center py-12">
-        <User className="w-16 h-16 text-gray-400 mx-auto mb-4" />
-        <h2 className="text-xl font-semibold text-white mb-2">
+        <User className="w-16 h-16 text-[color:var(--brand-text)]/50 mx-auto mb-4" />
+        <h2 className="text-xl font-semibold mb-2">
           Профиль не найден
         </h2>
-        <p className="text-gray-400 mb-4">
+        <p className="text-[color:var(--brand-text)]/60 mb-4">
           Начни играть чтобы создать свой профиль!
         </p>
         <button
           onClick={loadPlayerData}
-          className="px-6 py-2 bg-solana-purple text-white rounded-lg hover:bg-solana-purple/80 transition-colors"
+          className="px-6 py-2 bg-[color:var(--brand-accent)] text-white rounded-lg hover:opacity-90 transition-colors"
         >
           Обновить профиль
         </button>
@@ -270,16 +270,16 @@ const PlayerProfile: React.FC = () => {
       {/* Player Header */}
       <div className="cs2-card p-6">
         <div className="flex items-center gap-6">
-          <div className="w-20 h-20 bg-gradient-to-br from-solana-purple to-solana-green rounded-full flex items-center justify-center">
-            <User className="w-10 h-10 text-white" />
+          <div className="w-20 h-20 rounded-full flex items-center justify-center border border-[color:var(--brand-accent)]/40 bg-[color:var(--brand-accent)]/10">
+            <User className="w-10 h-10 text-[color:var(--brand-accent)]" />
           </div>
           
           <div className="flex-1">
             <div className="flex items-center gap-3 mb-2">
-              <h1 className="text-2xl font-bold text-white">
+              <h1 className="text-2xl font-bold">
                 {publicKey?.toString().slice(0, 8)}...{publicKey?.toString().slice(-4)}
               </h1>
-              <div className={`px-3 py-1 rounded-full text-sm font-semibold ${currentLevel.color} bg-black/20 border border-current/30`}>
+              <div className={`px-3 py-1 rounded-full text-sm font-semibold ${currentLevel.color} bg-black/5 border border-current/30`}>
                 <Crown className="w-4 h-4 inline mr-1" />
                 {currentLevel.title} (Ур. {currentLevel.level})
               </div>
@@ -287,16 +287,16 @@ const PlayerProfile: React.FC = () => {
             
             <div className="space-y-2">
               <div className="flex justify-between text-sm">
-                <span className="text-gray-400">
+                <span className="text-[color:var(--brand-text)]/60">
                   XP: {xp || 0} / {currentLevel.maxXP === 99999 ? '∞' : currentLevel.maxXP || 50}
                 </span>
-                <span className="text-gray-400">
+                <span className="text-[color:var(--brand-text)]/60">
                   {currentLevel.level >= PLAYER_LEVELS.length ? 'MAX' : `${Math.round(progressToNextLevel || 0)}%`}
                 </span>
               </div>
-              <div className="w-full bg-gray-700 rounded-full h-2">
+              <div className="w-full bg-black/10 rounded-full h-2">
                 <div 
-                  className="bg-gradient-to-r from-solana-purple to-solana-green h-2 rounded-full transition-all duration-500"
+                  className="bg-[color:var(--brand-accent)] h-2 rounded-full transition-all duration-500"
                   style={{ width: `${isNaN(progressToNextLevel) ? 0 : progressToNextLevel}%` }}
                 ></div>
               </div>
@@ -308,27 +308,27 @@ const PlayerProfile: React.FC = () => {
       {/* Stats Grid */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         <div className="cs2-card p-6 text-center">
-          <Target className="w-8 h-8 text-cs2-orange mx-auto mb-3" />
-          <div className="text-3xl font-bold text-cs2-orange mb-1">
+          <Target className="w-8 h-8 text-[color:var(--brand-accent)] mx-auto mb-3" />
+          <div className="text-3xl font-bold text-[color:var(--brand-accent)] mb-1">
             {playerData?.stats?.headshots || 0}
           </div>
-          <div className="text-gray-400">Хедшотов</div>
+          <div className="text-[color:var(--brand-text)]/60">Хедшотов</div>
         </div>
 
         <div className="cs2-card p-6 text-center">
-          <Zap className="w-8 h-8 text-cs2-blue mx-auto mb-3" />
-          <div className="text-3xl font-bold text-cs2-blue mb-1">
+          <Zap className="w-8 h-8 text-[color:var(--brand-accent)] mx-auto mb-3" />
+          <div className="text-3xl font-bold text-[color:var(--brand-accent)] mb-1">
             {playerData?.stats?.kill_streaks || 0}
           </div>
-          <div className="text-gray-400">Серий убийств</div>
+          <div className="text-[color:var(--brand-text)]/60">Серий убийств</div>
         </div>
 
         <div className="cs2-card p-6 text-center">
-          <TrendingUp className="w-8 h-8 text-solana-green mx-auto mb-3" />
-          <div className="text-3xl font-bold text-solana-green mb-1">
+          <TrendingUp className="w-8 h-8 text-[color:var(--brand-accent)] mx-auto mb-3" />
+          <div className="text-3xl font-bold text-[color:var(--brand-accent)] mb-1">
             {playerData?.stats?.total_kills || 0}
           </div>
-          <div className="text-gray-400">Всего убийств</div>
+          <div className="text-[color:var(--brand-text)]/60">Всего убийств</div>
         </div>
 
       </div>
@@ -337,7 +337,7 @@ const PlayerProfile: React.FC = () => {
       <div className="cs2-card p-6">
         <div className="flex items-center gap-3 mb-6">
           <Award className="w-6 h-6 text-yellow-400" />
-          <h3 className="text-xl font-semibold text-white">
+          <h3 className="text-xl font-semibold">
             Достижения ({unlockedAchievements.length}/{achievements.length})
           </h3>
         </div>
@@ -355,12 +355,12 @@ const PlayerProfile: React.FC = () => {
                 }`}
               >
                 <div className="flex items-center gap-3 mb-2">
-                  <Icon className={`w-6 h-6 ${achievement.unlocked ? 'text-green-400' : 'text-gray-400'}`} />
+                  <Icon className={`w-6 h-6 ${achievement.unlocked ? 'text-green-600' : 'text-[color:var(--brand-text)]/50'}`} />
                   <div className="flex-1">
-                    <h4 className={`font-semibold ${achievement.unlocked ? 'text-white' : 'text-gray-400'}`}>
+                    <h4 className={`font-semibold ${achievement.unlocked ? '' : 'text-[color:var(--brand-text)]/60'}`}>
                       {achievement.name}
                     </h4>
-                    <p className="text-sm text-gray-400">{achievement.description}</p>
+                    <p className="text-sm text-[color:var(--brand-text)]/60">{achievement.description}</p>
                   </div>
                   
                   {achievement.unlocked && (
@@ -369,8 +369,8 @@ const PlayerProfile: React.FC = () => {
                       disabled={claimingAchievement === achievement.id || (playerData?.claimed_achievements || []).includes(achievement.id)}
                       className={`text-xs font-semibold px-3 py-2 rounded transition-colors disabled:opacity-50 ${
                         (playerData?.claimed_achievements || []).includes(achievement.id)
-                          ? 'text-green-400 bg-green-400/10 cursor-not-allowed'
-                          : 'text-yellow-400 bg-yellow-400/10 hover:bg-yellow-400/20'
+                          ? 'text-green-700 bg-green-500/10 cursor-not-allowed'
+                          : 'text-[color:var(--brand-accent)] bg-[color:var(--brand-accent)]/10 hover:bg-[color:var(--brand-accent)]/20'
                       }`}
                     >
                       {(playerData?.claimed_achievements || []).includes(achievement.id) 
@@ -386,15 +386,15 @@ const PlayerProfile: React.FC = () => {
                 {achievement.progress !== undefined && achievement.maxProgress && (
                   <div className="mt-3">
                     <div className="flex justify-between text-xs mb-1">
-                      <span className="text-gray-400">Прогресс</span>
-                      <span className="text-gray-400">
+                      <span className="text-[color:var(--brand-text)]/60">Прогресс</span>
+                      <span className="text-[color:var(--brand-text)]/60">
                         {achievement.progress}/{achievement.maxProgress}
                       </span>
                     </div>
-                    <div className="w-full bg-gray-700 rounded-full h-1">
+                    <div className="w-full bg-black/10 rounded-full h-1">
                       <div 
                         className={`h-1 rounded-full transition-all duration-500 ${
-                          achievement.unlocked ? 'bg-green-400' : 'bg-gray-500'
+                          achievement.unlocked ? 'bg-green-600' : 'bg-gray-400'
                         }`}
                         style={{ 
                           width: `${Math.min((achievement.progress / achievement.maxProgress) * 100, 100)}%` 
@@ -413,46 +413,51 @@ const PlayerProfile: React.FC = () => {
 
       {/* Recent Activity */}
       <div className="cs2-card p-6">
-        <h3 className="text-lg font-semibold text-white mb-4">
+        <h3 className="text-lg font-semibold mb-4">
           Последняя активность
         </h3>
         
         {playerData.recent_achievements && playerData.recent_achievements.length > 0 ? (
           <div className="space-y-3">
-            {playerData.recent_achievements.slice(0, 5).map((activity: any, index: number) => (
-              <div key={index} className="flex items-center gap-3 p-3 bg-black/20 rounded-lg">
-                {activity.type === 'achievement_claim' ? (
-                  <Award className="w-5 h-5 text-yellow-400" />
-                ) : activity.type === 'headshot' ? (
-                  <Target className="w-5 h-5 text-cs2-orange" />
-                ) : (
-                  <Zap className="w-5 h-5 text-cs2-blue" />
-                )}
-                <div className="flex-1">
-                  <div className="text-white font-medium">
-                    {activity.type === 'achievement_claim' 
-                      ? `🏆 Достижение получено: ${activity.achievement_data?.achievement_name || getAchievementName(activity.achievement_data?.achievement_id) || 'Специальное достижение'}`
-                      : activity.type === 'headshot' 
-                        ? 'Хедшот токен получен' 
-                        : `Серия из ${activity.streak_count} убийств`
-                    }
+            {playerData.recent_achievements.slice(0, 5).map((activity: any, index: number) => {
+              const isClaim = activity.type === 'achievement_claim';
+              return (
+                <div
+                  key={index}
+                  className={`flex items-center justify-between p-4 rounded-lg border ${
+                    isClaim ? 'bg-green-50 border-green-300' : 'bg-white border-[color:var(--brand-border)]'
+                  }`}
+                >
+                  <div className="flex items-center gap-3">
+                    {isClaim ? (
+                      <Award className="w-5 h-5 text-yellow-600 flex-shrink-0" />
+                    ) : activity.type === 'headshot' ? (
+                      <Target className="w-5 h-5 text-[color:var(--brand-accent)] flex-shrink-0" />
+                    ) : (
+                      <Zap className="w-5 h-5 text-[color:var(--brand-accent)] flex-shrink-0" />
+                    )}
+                    <div>
+                      <div className="font-medium">
+                        {isClaim
+                          ? `🏆 Достижение получено: ${activity.achievement_data?.achievement_name || getAchievementName(activity.achievement_data?.achievement_id) || 'Специальное достижение'}`
+                          : activity.type === 'headshot'
+                          ? 'Хедшот токен получен'
+                          : `Серия из ${activity.streak_count} убийств`}
+                      </div>
+                      {activity.map && !isClaim && (
+                        <div className="text-sm text-[color:var(--brand-text)]/60">Карта: {activity.map}</div>
+                      )}
+                      {isClaim && (
+                        <div className="text-sm text-green-700">SKILLS токен зачислен на кошелёк</div>
+                      )}
+                    </div>
                   </div>
-                  {activity.map && activity.type !== 'achievement_claim' && (
-                    <div className="text-sm text-gray-400">
-                      Карта: {activity.map}
-                    </div>
-                  )}
-                  {activity.type === 'achievement_claim' && (
-                    <div className="text-sm text-green-400">
-                      SKILLS токен зачислен на кошелёк
-                    </div>
-                  )}
+                  <div className="text-sm text-[color:var(--brand-text)]/60">
+                    {new Date(activity.timestamp).toLocaleDateString()}
+                  </div>
                 </div>
-                <div className="text-sm text-gray-400">
-                  {new Date(activity.timestamp).toLocaleDateString()}
-                </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         ) : (
           <div className="text-center py-8 text-gray-400">

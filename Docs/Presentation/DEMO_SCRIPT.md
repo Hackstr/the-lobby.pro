@@ -1,4 +1,4 @@
-# 🎬 DEMO SCRIPT - The Lobby.Sol
+# 🎬 DEMO SCRIPT - The-lobby.pro
 ## 5-минутная презентация для хакатона
 
 ---
@@ -6,7 +6,7 @@
 ## 🎯 DEMO FLOW (5 минут)
 
 ### **[0:00-0:30] INTRO & PROBLEM**
-**"Добро пожаловать в The Lobby.Sol!"**
+**"Добро пожаловать в The-lobby.pro!"**
 
 *Показываю Home page*
 
@@ -117,7 +117,7 @@
 - "Proof of skill в blockchain"
 
 **CLOSING:**
-- "The Lobby.Sol - первая платформа токенизации CS2 достижений"
+- "The-lobby.pro - первая платформа токенизации CS2 достижений"
 - "Real-time integration с Solana blockchain"
 - "30 миллионов игроков CS2 - наш potential market"
 - "Gaming meets DeFi на Solana"

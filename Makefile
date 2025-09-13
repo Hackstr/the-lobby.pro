@@ -1,11 +1,11 @@
-# The Lobby.Sol - Hackathon Gaming Tokenization Platform
+# The-lobby.pro - Hackathon Gaming Tokenization Platform
 # Makefile for development workflow
 
 .PHONY: help install build test start clean deploy
 
 # Default target
 help:
-	@echo "The Lobby.Sol - Development Commands"
+	@echo "The-lobby.pro - Development Commands"
 	@echo "===================================="
 	@echo ""
 	@echo "Setup Commands:"

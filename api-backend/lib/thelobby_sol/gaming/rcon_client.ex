@@ -166,7 +166,7 @@ defmodule ThelobbySol.Gaming.RconClient do
   defp mock_command_response(command) do
     case command do
       "status" ->
-        "hostname: The Lobby.Sol CS2 Server #1\nversion : 1.40.0.1/13406 secure\nmap     : de_dust2\nplayers : 12/16 (0 bots)\n"
+        "hostname: The-lobby.pro CS2 Server #1\nversion : 1.40.0.1/13406 secure\nmap     : de_dust2\nplayers : 12/16 (0 bots)\n"
 
       "users" ->
         "userid name uniqueid connected ping loss state rate adr\n# 2 \"Player1\" STEAM_1:0:123456 02:30 50 0 active 80000\n# 3 \"Player2\" STEAM_1:1:789012 01:45 30 0 active 80000\n"

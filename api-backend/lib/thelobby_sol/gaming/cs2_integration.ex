@@ -15,7 +15,7 @@ defmodule ThelobbySol.Gaming.CS2Integration do
     [
       %{
         id: "production_server_1",
-        name: "🔥 The Lobby.Sol Hackathon Server",
+        name: "🔥 The-lobby.pro Hackathon Server",
         ip: "82.115.43.10",
         port: 27015,
         map: "de_dust2",

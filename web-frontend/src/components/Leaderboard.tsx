@@ -73,7 +73,7 @@ const Leaderboard: React.FC = () => {
     return (
       <div className="leaderboard cs2-card p-6">
         <div className="flex justify-center items-center h-64">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-solana-purple"></div>
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[color:var(--brand-accent)]"></div>
         </div>
       </div>
     );
@@ -83,15 +83,9 @@ const Leaderboard: React.FC = () => {
 
   return (
     <div className="leaderboard cs2-card p-6">
-      <div className="flex items-center gap-3 mb-6">
-        <Trophy className="w-6 h-6 text-yellow-400" />
-        <h3 className="text-xl font-semibold text-white">
-          Leaderboard
-        </h3>
-      </div>
 
       {/* Tabs */}
-      <div className="flex gap-2 mb-6">
+      <div className="inline-flex p-1 rounded-lg bg-black/5 border border-[color:var(--brand-border)] mb-6">
         {[
           { key: 'xp', label: 'XP', icon: Trophy },
           { key: 'headshots', label: 'Хедшоты', icon: Target },
@@ -102,10 +96,10 @@ const Leaderboard: React.FC = () => {
             <button
               key={tab.key}
               onClick={() => setActiveTab(tab.key as any)}
-              className={`flex items-center gap-2 px-4 py-2 rounded-lg transition-all ${
+              className={`flex items-center gap-2 px-4 py-2 rounded-md transition-all ${
                 activeTab === tab.key
-                  ? 'bg-solana-purple/20 text-solana-purple border border-solana-purple/30'
-                  : 'text-gray-400 hover:text-white hover:bg-white/5'
+                  ? 'bg-white text-[color:var(--brand-accent)] shadow-sm'
+                  : 'text-[color:var(--brand-text)]/70 hover:text-[color:var(--brand-text)]'
               }`}
             >
               <Icon className="w-4 h-4" />
@@ -123,7 +117,7 @@ const Leaderboard: React.FC = () => {
             className={`flex items-center gap-4 p-4 rounded-lg transition-all ${
               index < 3 
                 ? 'bg-gradient-to-r from-yellow-500/10 to-orange-500/10 border border-yellow-500/20' 
-                : 'bg-black/20 border border-gray-700'
+                : 'bg-white border border-[color:var(--brand-border)]'
             }`}
           >
             {/* Rank */}
@@ -134,14 +128,17 @@ const Leaderboard: React.FC = () => {
             {/* Player Info */}
             <div className="flex-1 min-w-0">
               <div className="flex items-center gap-3">
-                <div className="text-white font-medium">
+                <div className="font-medium">
                   {player.display_name}
                 </div>
-                <div className={`px-2 py-1 rounded text-xs font-medium ${(player as any).level_color || getLevelColor(player.level)} bg-black/20`}>
+                {index === 1 && (
+                  <span className="px-2 py-0.5 rounded text-[10px] font-semibold bg-yellow-500/10 text-yellow-700 border border-yellow-500/30">Champion</span>
+                )}
+                <div className={`px-2 py-1 rounded text-xs font-medium ${(player as any).level_color || getLevelColor(player.level)} bg-black/5`}>
                   {player.level}
                 </div>
               </div>
-              <div className="text-xs text-gray-400 font-mono">
+              <div className="text-xs text-[color:var(--brand-text)]/60 font-mono">
                 {player.wallet_address.slice(0, 8)}...{player.wallet_address.slice(-4)}
               </div>
             </div>
@@ -150,37 +147,37 @@ const Leaderboard: React.FC = () => {
             <div className="flex items-center gap-6 text-sm">
               {activeTab === 'xp' && (
                 <div className="text-center">
-                  <div className="text-white font-bold">{player.xp}</div>
-                  <div className="text-gray-400 text-xs">XP</div>
+                  <div className="font-bold text-[color:var(--brand-text)]">{player.xp}</div>
+                  <div className="text-[color:var(--brand-text)]/60 text-xs">XP</div>
                 </div>
               )}
               
               {activeTab === 'headshots' && (
                 <div className="text-center">
-                  <div className="text-cs2-orange font-bold">{player.headshots}</div>
-                  <div className="text-gray-400 text-xs">Хедшоты</div>
+                  <div className="text-[color:var(--brand-accent)] font-bold">{player.headshots}</div>
+                  <div className="text-[color:var(--brand-text)]/60 text-xs">Хедшоты</div>
                 </div>
               )}
               
               {activeTab === 'streaks' && (
                 <div className="text-center">
-                  <div className="text-cs2-blue font-bold">{player.kill_streaks}</div>
-                  <div className="text-gray-400 text-xs">Серии</div>
+                  <div className="text-[color:var(--brand-accent)] font-bold">{player.kill_streaks}</div>
+                  <div className="text-[color:var(--brand-text)]/60 text-xs">Серии</div>
                 </div>
               )}
               
               <div className="text-center">
-                <div className="text-gray-300">{player.total_kills}</div>
-                <div className="text-gray-400 text-xs">Убийств</div>
+                <div className="text-[color:var(--brand-text)]">{player.total_kills}</div>
+                <div className="text-[color:var(--brand-text)]/60 text-xs">Убийств</div>
               </div>
             </div>
           </div>
         ))}
       </div>
 
-      <div className="mt-6 p-4 bg-gradient-to-r from-solana-purple/10 to-solana-green/10 rounded-lg border border-solana-purple/20">
-        <p className="text-sm text-gray-300 text-center">
-          🏆 Реальный лидерборд игроков The Lobby.Sol
+      <div className="mt-6 p-4 bg-[color:var(--brand-accent)]/10 rounded-lg border border-[color:var(--brand-accent)]/20">
+        <p className="text-sm text-[color:var(--brand-text)] text-center">
+          🏆 Реальный лидерборд игроков The-lobby.pro
         </p>
       </div>
     </div>

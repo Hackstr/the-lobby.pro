@@ -9,7 +9,7 @@
 
 ## 📋 PROJECT OVERVIEW
 
-You are helping build "The Lobby.Sol" - a revolutionary gaming platform that tokenizes Counter-Strike 2 achievements on Solana blockchain. 
+You are helping build "The-lobby.pro" - a revolutionary gaming platform that tokenizes Counter-Strike 2 achievements on Solana blockchain. 
 
 **Core Concept:**
 - Players connect Phantom wallet to web platform

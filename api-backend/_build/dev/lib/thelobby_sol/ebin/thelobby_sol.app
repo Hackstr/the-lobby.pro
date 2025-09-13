@@ -15,6 +15,7 @@
           'Elixir.ThelobbysolWeb.Gettext',
           'Elixir.ThelobbysolWeb.HealthController',
           'Elixir.ThelobbysolWeb.LeaderboardController',
+          'Elixir.ThelobbysolWeb.PlatformController',
           'Elixir.ThelobbysolWeb.PlayerController',
           'Elixir.ThelobbysolWeb.Router',
           'Elixir.ThelobbysolWeb.Router.Helpers',

@@ -35,7 +35,7 @@ echo "7. Create server.cfg:"
 echo "sudo -u cs2server mkdir -p /home/cs2server/cs2/game/csgo/cfg"
 cat << 'EOF'
 sudo -u cs2server tee /home/cs2server/cs2/game/csgo/cfg/server.cfg << 'CONFIG_EOF'
-hostname "The Lobby.Sol CS2 Server #1"
+hostname "The-lobby.pro CS2 Server #1"
 sv_password ""
 sv_lan 0
 sv_region 3

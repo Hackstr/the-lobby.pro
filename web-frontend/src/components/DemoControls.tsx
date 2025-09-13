@@ -96,13 +96,13 @@ const DemoControls: React.FC = () => {
   return (
     <div className="demo-controls cs2-card p-6">
       <div className="flex items-center justify-between mb-4">
-        <h3 className="text-lg font-semibold text-white flex items-center gap-2">
-          <Play className="w-5 h-5 text-solana-purple" />
+        <h3 className="text-lg font-semibold flex items-center gap-2">
+          <Play className="w-5 h-5 text-[color:var(--brand-accent)]" />
           Demo Controls (для тестирования)
         </h3>
         
         {loading && (
-          <div className="flex items-center gap-2 px-3 py-1 rounded-full text-sm bg-blue-500/20 text-blue-400 border border-blue-500/30">
+          <div className="flex items-center gap-2 px-3 py-1 rounded-full text-sm bg-[color:var(--brand-accent)]/10 text-[color:var(--brand-accent)] border border-[color:var(--brand-accent)]/30">
             <RefreshCw className="w-4 h-4 animate-spin" />
             Обработка...
           </div>
@@ -113,36 +113,36 @@ const DemoControls: React.FC = () => {
         <button
           onClick={simulateHeadshot}
           disabled={loading}
-          className="flex items-center gap-3 p-4 bg-gradient-to-r from-cs2-orange/20 to-cs2-orange/10 border border-cs2-orange/30 rounded-lg hover:bg-cs2-orange/30 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+          className="flex items-center gap-3 p-4 bg-[color:var(--brand-accent)]/10 border border-[color:var(--brand-accent)]/30 rounded-lg hover:bg-[color:var(--brand-accent)]/20 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
         >
-          <Target className="w-6 h-6 text-cs2-orange" />
+          <Target className="w-6 h-6 text-[color:var(--brand-accent)]" />
           <div className="text-left">
-            <div className="text-white font-medium">Симулировать хедшот</div>
-            <div className="text-sm text-gray-400">+10 XP, +1 SKILLS</div>
+            <div className="font-medium">Симулировать хедшот</div>
+            <div className="text-sm text-[color:var(--brand-text)]/60">+10 XP, +1 SKILLS</div>
           </div>
         </button>
 
         <button
           onClick={simulateKillStreak}
           disabled={loading}
-          className="flex items-center gap-3 p-4 bg-gradient-to-r from-cs2-blue/20 to-cs2-blue/10 border border-cs2-blue/30 rounded-lg hover:bg-cs2-blue/30 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+          className="flex items-center gap-3 p-4 bg-[color:var(--brand-accent)]/10 border border-[color:var(--brand-accent)]/30 rounded-lg hover:bg-[color:var(--brand-accent)]/20 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
         >
-          <Zap className="w-6 h-6 text-cs2-blue" />
+          <Zap className="w-6 h-6 text-[color:var(--brand-accent)]" />
           <div className="text-left">
-            <div className="text-white font-medium">Симулировать серию</div>
-            <div className="text-sm text-gray-400">+50 XP, +5 SKILLS</div>
+            <div className="font-medium">Симулировать серию</div>
+            <div className="text-sm text-[color:var(--brand-text)]/60">+50 XP, +5 SKILLS</div>
           </div>
         </button>
 
         <button
           onClick={resetPlayerStats}
           disabled={loading}
-          className="flex items-center gap-3 p-4 bg-gradient-to-r from-red-500/20 to-red-500/10 border border-red-500/30 rounded-lg hover:bg-red-500/30 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+          className="flex items-center gap-3 p-4 bg-black/5 border border-[color:var(--brand-border)] rounded-lg hover:bg-black/10 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
         >
           <RotateCcw className="w-6 h-6 text-red-400" />
           <div className="text-left">
-            <div className="text-white font-medium">Сбросить статистику</div>
-            <div className="text-sm text-gray-400">Обнулить все данные</div>
+            <div className="font-medium">Сбросить статистику</div>
+            <div className="text-sm text-[color:var(--brand-text)]/60">Обнулить все данные</div>
           </div>
         </button>
       </div>

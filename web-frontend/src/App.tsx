@@ -25,10 +25,30 @@ function App() {
             toastOptions={{
               duration: 4000,
               style: {
-                background: 'rgba(0, 0, 0, 0.8)',
-                color: '#fff',
-                border: '1px solid rgba(153, 69, 255, 0.3)',
+                background: '#ffffff',
+                color: 'var(--brand-text)',
+                border: '1px solid rgba(0,0,0,0.08)',
+                boxShadow: '0 10px 24px rgba(0,0,0,0.08)',
+                zIndex: 9999,
               },
+              success: {
+                iconTheme: {
+                  primary: '#6D4AFA',
+                  secondary: '#fff',
+                },
+                style: {
+                  borderColor: 'rgba(109,74,250,0.3)',
+                }
+              },
+              error: {
+                iconTheme: {
+                  primary: '#E11D48',
+                  secondary: '#fff',
+                },
+                style: {
+                  borderColor: 'rgba(225,29,72,0.25)'
+                }
+              }
             }}
           />
         </div>

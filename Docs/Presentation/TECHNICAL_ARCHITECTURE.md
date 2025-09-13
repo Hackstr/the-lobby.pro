@@ -1,4 +1,4 @@
-# 🏗️ TECHNICAL ARCHITECTURE - The Lobby.Sol
+# 🏗️ TECHNICAL ARCHITECTURE - The-lobby.pro
 ## Подробная техническая архитектура для презентации
 
 ---

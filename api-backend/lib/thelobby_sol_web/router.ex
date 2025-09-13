@@ -32,6 +32,9 @@ defmodule ThelobbysolWeb.Router do
 
     # Leaderboard routes
     get "/leaderboard", LeaderboardController, :index
+
+    # Platform stats
+    get "/platform/stats", PlatformController, :stats
   end
 
   # Additional health endpoints

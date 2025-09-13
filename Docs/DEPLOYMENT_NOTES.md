@@ -1,4 +1,4 @@
-# 🚀 DEPLOYMENT NOTES - The Lobby.Sol
+# 🚀 DEPLOYMENT NOTES - The-lobby.pro
 ## Критические заметки для деплоя и production
 
 ---

@@ -6,11 +6,11 @@ const ProfilePage: React.FC = () => {
   return (
     <div className="profile-page">
       <div className="mb-8">
-        <h1 className="text-3xl font-gaming font-bold text-white mb-2">
+        <h1 className="text-3xl font-mono font-bold mb-2">
           Профиль игрока
         </h1>
-        <p className="text-gray-400">
-          Твоя статистика, достижения и прогресс в The Lobby.Sol
+        <p className="text-[color:var(--brand-text)]/70">
+          Твоя статистика, достижения и прогресс в The-lobby.pro
         </p>
       </div>
       

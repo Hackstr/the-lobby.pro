@@ -64,7 +64,7 @@ services:
       SRCDS_TOKEN: "YOUR_GSLT_TOKEN_HERE"
       
       # Server Configuration
-      CS2_SERVERNAME: "The Lobby.Sol Hackathon Server"
+      CS2_SERVERNAME: "The-lobby.pro Hackathon Server"
       CS2_RCONPW: "thelobby_rcon_2024_hackathon"
       CS2_PW: "thelobby_sol_2024"
       CS2_MAXPLAYERS: 16
@@ -116,10 +116,10 @@ cd ~/thelobby-cs2
 
 # Create custom server config
 cat > cs2-configs/server.cfg << 'CONFIG_EOF'
-// The Lobby.Sol CS2 Server Configuration
+// The-lobby.pro CS2 Server Configuration
 
 // Server Identity
-hostname "The Lobby.Sol Hackathon Server"
+hostname "The-lobby.pro Hackathon Server"
 sv_password "thelobby_sol_2024"
 sv_region 3
 sv_lan 0
@@ -165,14 +165,14 @@ sv_motd_unload_on_dismissal 0
 exec banned_user.cfg
 exec banned_ip.cfg
 
-echo "Server: The Lobby.Sol Hackathon"
+echo "Server: The-lobby.pro Hackathon"
 echo "Password: thelobby_sol_2024"
 echo "Connect via: steam://connect/82.115.43.10:27015/thelobby_sol_2024"
 CONFIG_EOF
 
 # Create competitive mode overrides
 cat > cs2-configs/gamemode_competitive_server.cfg << 'COMP_EOF'
-// The Lobby.Sol Competitive Overrides
+// The-lobby.pro Competitive Overrides
 
 // Shorter rounds for demo
 mp_maxrounds 16
@@ -193,7 +193,7 @@ mp_death_drop_gun 1
 mp_death_drop_grenade 2
 mp_death_drop_defuser 1
 
-echo "Competitive mode configured for The Lobby.Sol"
+echo "Competitive mode configured for The-lobby.pro"
 COMP_EOF
 
 echo "✅ Server configurations created"
@@ -206,7 +206,7 @@ cd ~/thelobby-cs2
 # Start server script
 cat > start_server.sh << 'START_EOF'
 #!/bin/bash
-echo "🚀 Starting The Lobby.Sol CS2 Server..."
+echo "🚀 Starting The-lobby.pro CS2 Server..."
 
 # Pull latest image
 docker compose pull
@@ -260,7 +260,7 @@ echo "1. Зайдите на: https://steamcommunity.com/dev/managegameservers"
 echo "2. Войдите в Steam аккаунт"
 echo "3. Создайте новый Game Server Account:"
 echo "   - App ID: 730 (Counter-Strike 2)"
-echo "   - Memo: The Lobby.Sol Hackathon Server"
+echo "   - Memo: The-lobby.pro Hackathon Server"
 echo "4. Скопируйте сгенерированный токен"
 echo ""
 echo "После получения токена:"

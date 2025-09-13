@@ -1,5 +1,5 @@
 # 🎮 CS2 DEDICATED SERVER INTEGRATION GUIDE
-## For The Lobby.Sol Gaming Platform
+## For The-lobby.pro Gaming Platform
 
 **Основано на: https://github.com/joedwards32/CS2**
 

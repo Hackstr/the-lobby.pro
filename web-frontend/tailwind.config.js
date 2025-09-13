@@ -7,13 +7,15 @@ export default {
   theme: {
     extend: {
       colors: {
-        'cs2-orange': '#FF6B00',
-        'cs2-blue': '#4A90E2',
-        'solana-purple': '#9945FF',
-        'solana-green': '#14F195',
+        brand: {
+          bg: '#FFF8EE',
+          text: '#4F4F4F',
+          accent: '#6D4AFA',
+          border: 'rgba(0,0,0,0.08)'
+        }
       },
       fontFamily: {
-        'gaming': ['Orbitron', 'monospace'],
+        'mono': ['JetBrains Mono', 'ui-monospace', 'SFMono-Regular', 'monospace'],
       },
     },
   },

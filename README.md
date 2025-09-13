@@ -1,4 +1,4 @@
-# 🚀 The Lobby.Sol - CS2 Gaming Tokenization Platform
+# 🚀 The-lobby.pro - CS2 Gaming Tokenization Platform
 
 **Hackathon Project**: Tokenizing Counter-Strike 2 achievements on Solana blockchain
 
@@ -8,7 +8,7 @@
 
 ## 🎯 Project Overview
 
-**The Lobby.Sol** is a revolutionary gaming platform that tokenizes Counter-Strike 2 achievements as NFTs on the Solana blockchain. Players connect their wallets, join CS2 servers, and earn tokens for headshots and kill streaks.
+**The-lobby.pro** is a revolutionary gaming platform that tokenizes Counter-Strike 2 achievements as NFTs on the Solana blockchain. Players connect their wallets, join CS2 servers, and earn tokens for headshots and kill streaks.
 
 ### Core Features
 - 🎮 **CS2 Integration**: Real-time server browsing and kill event tracking
